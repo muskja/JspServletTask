@@ -1,0 +1,155 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+
+
+  <servlet>
+    <servlet-name>RegisterServlet</servlet-name>
+    <servlet-class>com.example.servlet.RegisterServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>RegisterServlet</servlet-name>
+    <url-pattern>/RegisterServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>com.example.servlet.LoginServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/LoginServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>LogoutServlet</servlet-name>
+    <servlet-class>com.example.servlet.LogoutServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>LogoutServlet</servlet-name>
+    <url-pattern>/LogoutServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>UpdateServlet</servlet-name>
+    <servlet-class>com.example.servlet.UpdateServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>UpdateServlet</servlet-name>
+    <url-pattern>/Update</url-pattern>
+  </servlet-mapping>
+
+
+
+  <servlet>
+    <servlet-name>AdminServlet</servlet-name>
+    <servlet-class>com.example.servlet.AdminServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>AdminServlet</servlet-name>
+    <url-pattern>/AdminServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>UpdateUserServlet</servlet-name>
+    <servlet-class>com.example.servlet.UpdateUserServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>UpdateAddressServlet</servlet-name>
+    <url-pattern>/UpdateAddressServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>UpdateAddressServlet</servlet-name>
+    <servlet-class>com.example.servlet.UpdateAddressServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>UpdateUserServlet</servlet-name>
+    <url-pattern>/UpdateUserServlet</url-pattern>
+  </servlet-mapping>
+
+
+  <servlet>
+    <servlet-name>ForgetPasswordServlet</servlet-name>
+    <servlet-class>com.example.servlet.ForgetPasswordServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>ForgetPasswordServlet</servlet-name>
+    <url-pattern>/ForgetPasswordServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>EditUserServlet</servlet-name>
+    <servlet-class>com.example.servlet.EditUserServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>EditUserServlet</servlet-name>
+    <url-pattern>/EditUserServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>TempServlet</servlet-name>
+    <servlet-class>com.example.servlet.TempServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>TempServlet</servlet-name>
+    <url-pattern>/TempServlet</url-pattern>
+  </servlet-mapping>
+
+
+  <filter>
+    <filter-name>AdminFilter</filter-name>
+    <filter-class>com.example.filter.AdminFilter</filter-class>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>AdminFilter</filter-name>
+    <url-pattern>/AdminServlet</url-pattern>
+  </filter-mapping>
+
+
+  <servlet>
+    <servlet-name>UserDetailsUpdateServlet</servlet-name>
+    <servlet-class>com.example.servlet.UserDetailsUpdateServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>UserDetailsUpdateServlet</servlet-name>
+    <url-pattern>/UserDetailsUpdateServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>AddressDeleteServlet</servlet-name>
+    <servlet-class>com.example.servlet.AddressDeleteServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>AddressDeleteServlet</servlet-name>
+    <url-pattern>/AddressDeleteServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>AddAddressServlet</servlet-name>
+    <servlet-class>com.example.servlet.AddAddressServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>AddAddressServlet</servlet-name>
+    <url-pattern>/AddAddressServlet</url-pattern>
+  </servlet-mapping>
+
+
+</web-app>
