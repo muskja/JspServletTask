@@ -71,10 +71,14 @@
     <script>
         function addAddress() {
             var addressCount = document.getElementsByName('addressCount')[0].value;
+            var userId = document.getElementsByName('userId')[0].value;
             addressCount = parseInt(addressCount);
 
             var addressDiv = document.createElement('div');
-            addressDiv.innerHTML = '<li>Address Line 1: <input type="text" name="AddressLine1' + addressCount + '"></li>'
+            addressDiv.innerHTML =
+                '<input type="hidden" name="addressId' + addressCount + '" value="-1">'
+                + ' <input type="hidden" name="user_Id" value="'+userId+'">'
+                + '<li>Address Line 1: <input type="text" name="AddressLine1' + addressCount + '"></li>'
                 + '<li>Address Line 2: <input type="text" name="AddressLine2' + addressCount + '"></li>'
                 + '<li>City: <input type="text" name="City' + addressCount + '"></li>'
                 + '<li>State: <input type="text" name="State' + addressCount + '"></li>'

@@ -1,5 +1,6 @@
 package com.example.servlet;
 
+import com.example.model.Address;
 import com.example.util.DBUtil;
 
 import javax.servlet.ServletException;
@@ -10,6 +11,8 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserDetailsUpdateServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -22,22 +25,25 @@ public class UserDetailsUpdateServlet extends HttpServlet {
 
         switch (action) {
             case "updateUser":
-//                updateUserDetails(request, response);
-//                updateAddressDetails(request, response);
-                addAddress(request, response);
+                updateUserDetails(request, response);
+                updateAddressDetails(request, response);
+                addNewAddress(request, response);
+                response.sendRedirect("index.jsp");
+
 //                response.sendRedirect("success.jsp");
                 break;
 
-//            case "addAddress":
-//                addAddress(request, response);
-//                response.sendRedirect("index.jsp"); // Redirect to the user details page after adding the address
-//                break;
+            case "addAddress": // Handle adding new address
+                addNewAddress(request, response);
+                response.sendRedirect("index.jsp"); // Redirect to the user details page after adding the address
+                break;
 
             default:
                 response.sendRedirect("index.jsp"); // Redirect to the appropriate page after updating
                 break;
         }
     }
+
 
     private void updateUserDetails(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String firstName = request.getParameter("FirstName");
@@ -61,7 +67,7 @@ public class UserDetailsUpdateServlet extends HttpServlet {
     }
 
     private void updateAddressDetails(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int user_Id = Integer.parseInt(request.getParameter("userId"));
+        int user_Id = Integer.parseInt(request.getParameter("user_Id"));
         int addressCount = Integer.parseInt(request.getParameter("addressCount"));
 
         try (Connection connection = DBUtil.getConnection()) {
@@ -73,10 +79,8 @@ public class UserDetailsUpdateServlet extends HttpServlet {
                 String state = request.getParameter("State" + addressIndex);
                 String country = request.getParameter("Country" + addressIndex);
                 String pinCode = request.getParameter("PinCode" + addressIndex);
-                String addressIdParam = request.getParameter("addressId" + addressIndex);
+                int Id = Integer.parseInt(request.getParameter("Id"));
 
-                // Check if addressIdParam is not null and not empty before parsing it as an integer
-                int addressId = (addressIdParam != null && !addressIdParam.isEmpty()) ? Integer.parseInt(addressIdParam) : -1;
 
                 PreparedStatement preparedStatement = connection.prepareStatement(query);
                 preparedStatement.setString(1, addressLine1);
@@ -85,43 +89,68 @@ public class UserDetailsUpdateServlet extends HttpServlet {
                 preparedStatement.setString(4, state);
                 preparedStatement.setString(5, country);
                 preparedStatement.setString(6, pinCode);
-                preparedStatement.setInt(7, addressId);
+                preparedStatement.setInt(7, Id);
                 preparedStatement.setInt(8, user_Id);
                 preparedStatement.executeUpdate();
             }
-        } catch (SQLException | NumberFormatException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    private void addAddress(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int userId = Integer.parseInt(request.getParameter("userId"));
-        String addressLine1 = request.getParameter("AddressLine1");
-        String addressLine2 = request.getParameter("AddressLine2");
-        String city = request.getParameter("City");
-        String state = request.getParameter("State");
-        String country = request.getParameter("Country");
-        String pinCode = request.getParameter("PinCode");
+    private void addNewAddress(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int addressCount = Integer.parseInt(request.getParameter("addressCount"));
+        int user_Id = Integer.parseInt(request.getParameter("userId"));
 
-        // Server-side validation to ensure required fields are not null or empty
-        if (addressLine1 == null || addressLine1.isEmpty()) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Address Line 1 cannot be null or empty");
-            return;
+        List<Address> addresses =  new ArrayList<>();
+
+        if(addressCount != 0) {
+            addressCount--;
+            while (addressCount >= 0) {
+                Address address = new Address();
+                address.setId(Integer.parseInt(request.getParameter("addressId" + addressCount)));
+                address.setAddressLine1(request.getParameter("AddressLine1" + addressCount));
+                address.setAddressLine2(request.getParameter("AddressLine2" + + addressCount));
+                address.setCity( request.getParameter("City" + addressCount));
+                address.setState(request.getParameter("State" + addressCount));
+                address.setCountry(request.getParameter("Country" + + addressCount));
+                address.setPinCode( request.getParameter("PinCode" + addressCount));
+
+                addresses.add(address);
+
+                addressCount--;
+            }
+
         }
 
-        try (Connection connection = DBUtil.getConnection()) {
-            String query = "INSERT INTO addresses (AddressLine1, AddressLine2, City, State, Country, PinCode, User_Id) VALUES (?, ?, ?, ?, ?, ?, ?)";
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, addressLine1);
-            preparedStatement.setString(2, addressLine2);
-            preparedStatement.setString(3, city);
-            preparedStatement.setString(4, state);
-            preparedStatement.setString(5, country);
-            preparedStatement.setString(6, pinCode);
-            preparedStatement.setInt(7, userId);
-            preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        for (Address address: addresses) {
+            // Validate that the 'AddressLine1' is not empty or null before inserting into the database
+            if (address.getAddressLine1() == null || address.getAddressLine1().isEmpty()) {
+                // Handle the case when 'AddressLine1' is missing or empty
+                response.sendRedirect("error.jsp"); // Redirect to an error page or display an error message
+                return;
+            }
+
+            //If ID of address is -1 then it is new address
+            if (address.getId() == -1) {
+                try (Connection connection = DBUtil.getConnection()) {
+                    String query = "INSERT INTO addresses (AddressLine1, AddressLine2, City, State, Country, PinCode, User_Id) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                    PreparedStatement preparedStatement = connection.prepareStatement(query);
+                    preparedStatement.setString(1, address.getAddressLine1());
+                    preparedStatement.setString(2, address.getAddressLine2());
+                    preparedStatement.setString(3, address.getCity());
+                    preparedStatement.setString(4, address.getState());
+                    preparedStatement.setString(5, address.getCountry());
+                    preparedStatement.setString(6, address.getPinCode());
+                    preparedStatement.setInt(7, user_Id);
+                    preparedStatement.executeUpdate();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
         }
-    }}
+    }
+
+
+}
 

@@ -40,7 +40,16 @@
                         <li>Country: <input type="text" name="Country" value="<%= address.getCountry() %>"></li>
                         <li>PinCode: <input type="text" name="PinCode" value="<%= address.getPinCode() %>"></li>
                         <br/>
-                        <input type="submit" value="Update Address">
+                        <input type="submit" value="Update">
+
+                        <li>
+                              <button type="submit" formaction="AddressDeleteServlet" formmethod="post" onclick="return confirm('Are you sure you want to delete this address?')">
+                                    <input type="hidden" name="user_Id" value="<%= user.getId() %>">
+                                    <input type="hidden" name="Id" value="<%= address.getId() %>">
+                                     Delete
+                                      </button>
+                                       </li>
+
                     </form>
                 <% } }
                 else {
@@ -48,7 +57,7 @@
                 }
                 %>
             </ul>
-            <input type="submit" value="Update">
+            <!--<input type="submit" value="Update">-->
         </form>
         <% } %>
     <% } else { %>
