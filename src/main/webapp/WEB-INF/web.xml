@@ -80,16 +80,6 @@
 
 
   <servlet>
-    <servlet-name>ForgetPasswordServlet</servlet-name>
-    <servlet-class>com.example.servlet.ForgetPasswordServlet</servlet-class>
-  </servlet>
-
-  <servlet-mapping>
-    <servlet-name>ForgetPasswordServlet</servlet-name>
-    <url-pattern>/ForgetPasswordServlet</url-pattern>
-  </servlet-mapping>
-
-  <servlet>
     <servlet-name>EditUserServlet</servlet-name>
     <servlet-class>com.example.servlet.EditUserServlet</servlet-class>
   </servlet>
@@ -150,6 +140,38 @@
     <servlet-name>AddAddressServlet</servlet-name>
     <url-pattern>/AddAddressServlet</url-pattern>
   </servlet-mapping>
+
+  <servlet>
+    <servlet-name>UserAddressDeleteServlet</servlet-name>
+    <servlet-class>com.example.servlet.UserAddressDeleteServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>UserAddressDeleteServlet</servlet-name>
+    <url-pattern>/UserAddressDeleteServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>AdminDeleteUserServlet</servlet-name>
+    <servlet-class>com.example.servlet.AdminDeleteUserServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>AdminDeleteUserServlet</servlet-name>
+    <url-pattern>/AdminDeleteUserServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>TriggerServlet</servlet-name>
+    <servlet-class>com.example.servlet.TriggerServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>TriggerServlet</servlet-name>
+    <url-pattern>/TriggerServlet</url-pattern>
+  </servlet-mapping>
+
+
 
 
 </web-app>

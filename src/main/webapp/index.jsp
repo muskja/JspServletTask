@@ -9,6 +9,7 @@
 <br>
 <br>
 
+
  <button onclick="location.href='register.jsp'">Login as New User</button>
  <br>
  <br>

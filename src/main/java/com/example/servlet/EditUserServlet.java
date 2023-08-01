@@ -4,7 +4,6 @@ import com.example.model.Address;
 import com.example.model.AddressDAO;
 import com.example.model.User;
 import com.example.model.UserDAO;
-
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

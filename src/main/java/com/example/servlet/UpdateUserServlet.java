@@ -1,9 +1,6 @@
 package com.example.servlet;
 
-import com.example.model.Address;
-import com.example.model.User;
 import com.example.util.DBUtil;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -25,6 +22,7 @@ public class UpdateUserServlet extends HttpServlet {
         switch (action) {
             case "updateUser":
                 updateUserDetails(request, response);
+                updateAddressDetails(request, response);
                 response.sendRedirect("success.jsp");
                 break;
             case "updateAddress":

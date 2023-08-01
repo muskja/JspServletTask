@@ -23,7 +23,7 @@
             <p>Email: <input type="text" name="Email" value="<%= user.getEmail() %>"></p>
             <p>PhoneNumber: <input type="text" name="PhoneNumber" value="<%= user.getPhoneNumber() %>"></p>
             <p>Gender: <input type="text" name="Gender" value="<%= user.getGender() %>"></p>
-              <input type="submit" value="UpdateUser">
+            <input type="submit" value="UpdateUser">
 
             <h2>Addresses</h2>
             <ul>
@@ -63,9 +63,13 @@
                 <!-- New address fields will be added here -->
             </div>
 
-            <!--<input type="submit" value="Update">-->
-        </form>
+            <br>
 
+            <!-- The button is added here -->
+            <form action="TriggerServlet" method="post">
+                <input type="hidden" name="userId" value="<%= user.getId() %>">
+                <input type="submit" value="Delete User">
+            </form>
         <script>
             function addAddressFields<%= user.getId() %>() {
                 const container = document.getElementById("addressFieldsContainer<%= user.getId() %>");
@@ -100,3 +104,7 @@
 
 </body>
 </html>
+<br>
+<form action="LogoutServlet" method="post">
+    <button type="submit">Logout</button>
+</form>

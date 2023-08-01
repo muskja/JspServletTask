@@ -95,3 +95,7 @@
     </script>
 </body>
 </html>
+<br>
+<form action="LogoutServlet" method="post">
+    <button type="submit">Logout</button>
+</form>

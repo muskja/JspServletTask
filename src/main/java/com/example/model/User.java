@@ -3,29 +3,26 @@ package com.example.model;
 import java.util.List;
 
 public class User {
-    private int Id;
-    private String FirstName;
-    private String LastName;
-    private String Email;
-    private String Password;
+    private int id;
+    private String firstname;
+    private String lastname;
+    private String email;
+    private String password;
 
-    private String PhoneNumber;
-    private String Gender;
+    private String phonenumber;
+    private String gender;
 
     private List<Address> addresses;
 
-//    public User(long userId, String firstName, String lastName, String email, String phoneNumber, String gender) {
-//        // Default constructor
-//    }
 
     public User(int Id,  String FirstName, String LastName, String Email, String Password, String PhoneNumber, String Gender) {
-        this.Id = Id;
-        this.FirstName = FirstName;
-        this.LastName = LastName;
-        this.Email = Email;
-        this.Password = Password;
-        this.PhoneNumber = PhoneNumber;
-        this.Gender = Gender;
+        this.id = Id;
+        this.firstname = FirstName;
+        this.lastname = LastName;
+        this.email = Email;
+        this.password = Password;
+        this.phonenumber = PhoneNumber;
+        this.gender = Gender;
 
         this.addresses = addresses;
     }
@@ -36,59 +33,59 @@ public class User {
     // Getters and setters
 
     public int getId() {
-        return Id;
+        return id;
     }
 
     public void setId(int Id) {
-        this.Id = Id;
+        this.id = Id;
     }
 
     public String getFirstName() {
-        return FirstName;
+        return firstname;
     }
 
     public void setFirstName(String FirstName) {
-        this.FirstName = FirstName;
+        this.firstname = FirstName;
     }
 
     public String getLastName() {
-        return LastName;
+        return lastname;
     }
 
     public void setLastName(String LastName) {
-        this.LastName = LastName;
+        this.lastname = LastName;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String Email) {
-        this.Email = Email;
+        this.email = Email;
     }
 
     public String getPassword() {
-        return Password;
+        return password;
     }
 
     public void setPassword(String Password) {
-        this.Password = Password;
+        this.password = Password;
     }
 
     public String getPhoneNumber() {
-        return PhoneNumber;
+        return phonenumber;
     }
 
     public void setPhoneNumber(String PhoneNumber) {
-        this.PhoneNumber = PhoneNumber;
+        this.phonenumber = PhoneNumber;
     }
 
     public String getGender() {
-        return Gender;
+        return gender;
     }
 
     public void setGender(String Gender) {
-        this.Gender = Gender;
+        this.gender = Gender;
     }
 
     public List<Address> getAddresses() {
@@ -98,6 +95,5 @@ public class User {
     public void setAddresses(List<Address> addresses) {
         this.addresses = addresses;
     }
-
 
 }

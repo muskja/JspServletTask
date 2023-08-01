@@ -2,7 +2,6 @@ package com.example.servlet;
 
 import com.example.model.Address;
 import com.example.util.DBUtil;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -29,8 +28,6 @@ public class UserDetailsUpdateServlet extends HttpServlet {
                 updateAddressDetails(request, response);
                 addNewAddress(request, response);
                 response.sendRedirect("index.jsp");
-
-//                response.sendRedirect("success.jsp");
                 break;
 
             case "addAddress": // Handle adding new address
@@ -79,8 +76,7 @@ public class UserDetailsUpdateServlet extends HttpServlet {
                 String state = request.getParameter("State" + addressIndex);
                 String country = request.getParameter("Country" + addressIndex);
                 String pinCode = request.getParameter("PinCode" + addressIndex);
-                int Id = Integer.parseInt(request.getParameter("Id"));
-
+                int Id = Integer.parseInt(request.getParameter("addressId" + addressIndex)); // Updated here
 
                 PreparedStatement preparedStatement = connection.prepareStatement(query);
                 preparedStatement.setString(1, addressLine1);
@@ -150,7 +146,4 @@ public class UserDetailsUpdateServlet extends HttpServlet {
             }
         }
     }
-
-
 }
-

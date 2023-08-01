@@ -1,83 +1,83 @@
 package com.example.model;
 
 public class Address {
-    private int Id;
-    private String AddressLine1;
-    private String AddressLine2;
-    private String City;
-    private String State;
-    private String Country;
-    private String PinCode;
+    private int id;
+    private String addressline1;
+    private String addressline2;
+    private String city;
+    private String state;
+    private String country;
+    private String pincode;
 
     public Address() {
         // Default constructor
     }
 
     public Address(int Id, String AddressLine1, String AddressLine2, String City, String State, String Country, String PinCode) {
-        this.Id = Id;
-        this.AddressLine1 = AddressLine1;
-        this.AddressLine2 = AddressLine2;
-        this.City = City;
-        this.State = State;
-        this.Country = Country;
-        this.PinCode = PinCode;
+        this.id = Id;
+        this.addressline1 = AddressLine1;
+        this.addressline2 = AddressLine2;
+        this.city = City;
+        this.state = State;
+        this.country = Country;
+        this.pincode = PinCode;
     }
 
     // Getters and setters
 
     public int getId() {
-        return Id;
+        return id;
     }
 
     public void setId(int Id) {
-        this.Id = Id;
+        this.id = Id;
     }
 
     public String getAddressLine1() {
-        return AddressLine1;
+        return addressline1;
     }
 
     public void setAddressLine1(String AddressLine1) {
-        this.AddressLine1 = AddressLine1;
+        this.addressline1 = AddressLine1;
     }
 
     public String getAddressLine2() {
-        return AddressLine2;
+        return addressline2;
     }
 
     public void setAddressLine2(String AddressLine2) {
-        this.AddressLine2 = AddressLine2;
+        this.addressline2 = AddressLine2;
     }
 
     public String getCity() {
-        return City;
+        return city;
     }
 
     public void setCity(String City) {
-        this.City = City;
+        this.city = City;
     }
 
     public String getState() {
-        return State;
+        return state;
     }
 
     public void setState(String State) {
-        this.State = State;
+        this.state = State;
     }
 
     public String getCountry() {
-        return Country;
+        return country;
     }
 
     public void setCountry(String Country) {
-        this.Country = Country;
+        this.country = Country;
     }
 
     public String getPinCode() {
-        return PinCode;
+        return pincode;
     }
 
     public void setPinCode(String PinCode) {
-        this.PinCode = PinCode;
+        this.pincode = PinCode;
     }
 }
